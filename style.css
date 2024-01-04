@@ -36,10 +36,6 @@
     width: 35vw;
 }
 
-.description>p{
-    font-weight: 600;
-}
-
 .input-field{
     display: flex;
     justify-content: center;
@@ -71,46 +67,65 @@
     width: 16px;
 }
 
-.dish-container{
+.flex{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 2vh;
 }
 
 .main-container{
     margin: 5vh;
 }
 
+/* .dish-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 5vh;
+    row-gap: 7vh;
+    margin: 5vh;
+}  */
+
+.dish-container {
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    row-gap: 6vh;
+    margin: 5vh;
+}
 .dish-image{
     width: 50vh;
-    height: 50vh;
     /* transition: all 0.3s;
     transform: scale(1); */
 }
 
 .result-div{
-    margin: 6vh;
-    /* overflow: hidden; */
-    margin: 1px solid black;
+    overflow: hidden;
 }
-
+.result-div h3{
+    word-break: break-all;
+}
 .result-div:hover{
     cursor: pointer;
 }
 .result-div:hover h3{
     color:#FF7900;
+
 }
 
-.result-div h3{
+/* .result-div h3{
     width: 30vw;
-}
+} */
 /* .result-div:hover img{
     transform: scale(1.1);    
 } */
 
 h2{
     font-weight: 600;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 h3{
@@ -126,7 +141,7 @@ h3{
     top:10%;
     left: 30%;
     display: none;
-    overflow: hidden;
+    overflow:visible;
     box-shadow: 0 0 0 1000px #00000080;
 }
 
@@ -151,4 +166,57 @@ h3{
 }
 .ingredients-container{
     padding: 3vh;
+}
+
+@media screen and (max-width:600px){
+    .logo>img{
+        height:80px ;
+        width:80px ;
+        margin-top: 2vh;
+    }
+    .website-name{
+        font-size: 37px;
+        margin-top: -3vh;
+    }
+    
+    .description{
+        width: 75vw;
+    }
+    .description>p{
+        font-size: 14px;
+    }
+    .input{
+        width: 60vw;
+    }
+    .input-field{
+        margin: 2vw;
+    }
+    .search-button{
+        width: 30px;
+    }
+    .search-button>img{
+        height: 13px;
+        width: 13px;
+    }
+    .main-container{
+        margin-top: 2vh;
+    }
+    h2{
+        font-size: 20px;
+    }
+    .dish-image{
+        width: 30vh;
+    }
+    h3{
+        font-size: 15px;
+    }
+    .dish-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 5vh;
+    }
+    .dish-container h3{
+        width: 30vh;
+    }
 }
