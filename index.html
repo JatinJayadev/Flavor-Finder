@@ -7,12 +7,15 @@
         <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Creating div for hero-page -->
     <div class="hero-page ">
         
+        <!-- Adding Logo -->
         <div class="logo">
             <img src="assets/Logo.png" alt="">
         </div>
         
+        <!--For website name -->
         <h1 class="website-name orange">FLAVORFINDER</h1>
         
         
@@ -24,6 +27,7 @@
             </p>
         </div>
         
+        <!-- Search Boc -->
         <div class="input-field">
             <input class="input" type="text" id="input" placeholder="Top searches..">
             <button class="search-button" id="submit"><img src="assets/magnifying-glass (1).png" alt=""></button>
@@ -31,75 +35,50 @@
     
     </div>
     
+    <!-- Modal -->
     <div id="modal" class="modal">
         <div class="ingredients-container">
-            <span class="close" id="closeBtn" onclick="modelclose()">&times;</span>
+            
+            <span class="close" id="closeBtn">&times;</span>
+            
             <h2 class="ingredients-text orange">Ingredients</h2>
+            
+            <!-- To store ingredients of dishes -->
             <ol id="modalIngredients">
+
             </ol>   
         </div>
     </div>
-
+    
+    <!-- Random Dish Container -->
     <div class="main-container">
+
         <h2 >Meal of the Day:</h2>
-        <div class="flex" id="randomMealDiv">
+        
+        <div class="randomDiv" id="randomMealDiv">
             <!-- <div class="result-div">
                 <img class="dish-image" src="https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg" alt="">
                 <h3 class="orange" id="randomDishName">Name of dish</h3>
             </div> -->
         </div>
+    
     </div>
     
+    <!-- Searched Dish Container -->
     <div class="main-container">
+        
         <h2>Search Results</h2>
+        
         <div class="dish-container" id="searchedDish">
             <!-- <div>
                 <div class="result-div">
                     <img class="dish-image" src="https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg" alt="">
                     <h2>Name of dish</h2>
                 </div>
-            </div>
-            <div>
-                <div class="result-div">
-                    <img class="dish-image" src="https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg" alt="">
-                    <h2>Name of dish</h2>
-                </div>
-            </div>
-            <div>
-                <div class="result-div">
-                    <img class="dish-image" src="https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg" alt="">
-                    <h2>Name of dish</h2>
-                </div>
-            </div>
-            <div>
-                <div class="result-div">
-                    <img class="dish-image" src="https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg" alt="">
-                    <h2>Name of dish</h2>
-                </div>
-            </div>
-            <div>
-                <div class="result-div">
-                    <img class="dish-image" src="https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg" alt="">
-                    <h2>Name of dish</h2>
-                </div>
-            </div>
-            <div>
-                <div class="result-div">
-                    <img class="dish-image" src="https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg" alt="">
-                    <h2>Name of dish</h2>
-                </div>
             </div> -->
+      
         </div>
     </div>
-    <script>
-        function modelopen(){
-            document.getElementById("modal").style.display="block";
-        }
-
-        function modelclose(){
-            document.getElementById("modal").style.display="none";
-        }
-    </script>
     <script src="app.js"></script>
 </body>
 </html>

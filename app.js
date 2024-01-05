@@ -1,5 +1,4 @@
 //Getting RandomMeals from api and calling function to display in html
-
 function fetchRandomMeal() {
     fetch('https://www.themealdb.com/api/json/v1/1/random.php')
     
@@ -20,6 +19,7 @@ function fetchRandomMeal() {
 }
 fetchRandomMeal();
 
+//Displaying Random Meal
 function displayRandomMeal(random){
     let randomMealDiv=document.getElementById("randomMealDiv")
     
@@ -29,17 +29,18 @@ function displayRandomMeal(random){
     <h3 class="orange" id="randomDishName">${random.strMeal}</h3>
     </div>`
     
-    let mealId=random.idMeal
+    let mealId=random.idMeal   //Sending meal id into another function to display ingredients on click
     randomMealDiv.addEventListener('click',()=>{
-        openpopup(mealId)
+        openModal(mealId)
         console.log(mealId)
     })
 }
 
 
-let submitButton=document.getElementById("submit")
+//Getting value of searched category from user
+let searchButton=document.getElementById("submit")
 
-submitButton.addEventListener('click',()=>{
+searchButton.addEventListener('click',()=>{
     
     let inputCategory=document.getElementById("input").value
     console.log(inputCategory)
@@ -47,6 +48,8 @@ submitButton.addEventListener('click',()=>{
     fetchSearchedMeal(inputCategory)
 })
 
+
+//Fetching api category according userInput
 
 function fetchSearchedMeal(category){
     let categoryApi=`https://themealdb.com/api/json/v1/1/filter.php?c=${category}`
@@ -65,50 +68,48 @@ function fetchSearchedMeal(category){
         let displayDish=document.getElementById("searchedDish")
         
         displayDish.innerHTML=""
+
         searchedCategory.forEach(dishes=>{
             const div=document.createElement("div")
             
+            //Displaying searched Meals in inner HTML
             div.innerHTML=`
             <div class="result-div" id="${dishes.idMeal}" >
                 <img class="dish-image" id="Modal-open" src="${dishes.strMealThumb}" alt="">
                 <h3 class="orange">${dishes.strMeal}</h3>
             </div>
             `
+            let mealId=dishes.idMeal
             div.onclick=()=>{
-                console.log("no")
-                openpopup(dishes.idMeal)
+                openModal(mealId) //Taking id to other function to display ingredients on click
             }
             
             displayDish.append(div)
             
-            // console.log(dishes.idMeal)
-            // let mealId=document.getElementById(dishes.idMeal)
-            // document.getElementById(dishes.idMeal).addEventListener('click',()=>{
-            //     console.log(mealId)
-            //     openpopup(dishes.idMeal)
-            // })
         })
     })
+
     .catch(error=>{
         console.log(error)
     })
 }
 
+//Creating variables related to modal
 let modalOpen=document.getElementById("Modal-open")
-// modalOpen.addEventListener('click',()=>{
-//     document.getElementById("modal").style.display="block"
-// })
 let modalIngredients=document.getElementById("modalIngredients")
 
+//This is for closing modal
 let modalClose=document.getElementById("closeBtn")
 modalClose.addEventListener('click',()=>{
     document.getElementById("modal").style.display="none"
 })
 
-function openpopup(mealId){
+//Function for opening Modal
+function openModal(mealId){
     
     console.log(mealId)
     
+    //Fetching ingredients of clicked dish
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
     
     .then(result=>{
@@ -116,28 +117,26 @@ function openpopup(mealId){
     })
     
     .then(response=>{
-        // console.log(response.meals[0])
         let dishes=response.meals[0]
 
         modalIngredients.innerHTML=""
         
+        //Looping through all ingredients
         for(let i=1;i<21;i++){
+
             let ingredient = dishes[`strIngredient${i}`];
             
-            if (ingredient !== "" ) {
+            //Displaying ingredients until all ingredients print in HTML
+            if (ingredient !=="" ) {
+                
                 console.log(`${ingredient}`);
+
                 modalIngredients.innerHTML+=`
                 <li>${ingredient}</li>`
             }
         }
         
+        //Displaying modal after everything gets ready
         document.getElementById("modal").style.display="block"
     })
 }
-// modalOpen.addEventListener('click',()=>{
-// })
-
-// for(let i=1;i<=20;i++){
-//     if (data.meals[0][`strIngredient${i}`] != "" && data.meals[0][`strIngredient${i}`]!=null){
-//     document.getElementById("Ingredi-list").innerHTML += `<li>${data.meals[0][`strIngredient${i}`]}</li>`;
-//   }}

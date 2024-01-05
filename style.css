@@ -6,7 +6,7 @@
     font-family: 'Poppins', sans-serif ;
     scroll-behavior: smooth;
 }
-
+/* Style for whole hero div*/
 .hero-page{
     display: flex;
     justify-content: center;
@@ -15,12 +15,14 @@
     align-items: center;
 }
 
+/* Logo Style */
 .logo>img{
    height: 150px;
    width: 150px;
    margin-top: 4vh;
 }
 
+/* Websie name style */
 .website-name{
     font-weight: 700 ;
     font-size: 80px;
@@ -31,11 +33,13 @@
     color: #D64213;
 }
 
+
 .description{
     margin: 0vw;
     width: 35vw;
 }
 
+/* Style for Search box  */
 .input-field{
     display: flex;
     justify-content: center;
@@ -67,7 +71,8 @@
     width: 16px;
 }
 
-.flex{
+/* Style for randomDishDiv */
+.randomDiv{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -78,17 +83,7 @@
     margin: 5vh;
 }
 
-/* .dish-container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    column-gap: 5vh;
-    row-gap: 7vh;
-    margin: 5vh;
-}  */
-
+/* Style for searched dish container */
 .dish-container {
     display: flex;
     justify-content:space-around;
@@ -96,61 +91,70 @@
     row-gap: 6vh;
     margin: 5vh;
 }
+
+/* Style for all displayed images */
 .dish-image{
     width: 50vh;
-    /* transition: all 0.3s;
-    transform: scale(1); */
 }
 
+/* Styles for Displayed Images and the container which holds them */
 .result-div{
     overflow: hidden;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    padding: 10px;
+    border: 1px solid #bfbfbf;
 }
+
 .result-div h3{
-    word-break: break-all;
+    width: 50vh;
 }
+
 .result-div:hover{
     cursor: pointer;
 }
+
 .result-div:hover h3{
     color:#FF7900;
-
 }
-
-/* .result-div h3{
-    width: 30vw;
-} */
-/* .result-div:hover img{
-    transform: scale(1.1);    
-} */
 
 h2{
     font-weight: 600;
-    font-size: 30px;
+    font-size: 32px;
 }
 
 h3{
     font-weight: 600;
 }
 
+/* Style for Modal */
 .modal{
-    height: 500px;
-    background-color: whitesmoke;
-    width: 500px;
+    height: 450px;
+    background-color: white;
+    width: 430px;
     padding: 2vh;
     position: fixed;
-    top:10%;
-    left: 30%;
+    overflow-y: scroll;
     display: none;
-    overflow:visible;
+    top:14%;
+    left: 33%;
+    border: 1px solid black;
     box-shadow: 0 0 0 1000px #00000080;
+}
+
+/* Style for things inside modal */
+.ingredients-container{
+    padding: 1vh;
 }
 
 .close{
     float: right;
     font-size: 30px;
-    margin-left: 3vh;
     margin-top: -3vh;
     cursor: pointer;
+}
+
+.close:hover{
+    color: #FF7900;
 }
 
 .ingredients-text{
@@ -158,22 +162,24 @@ h3{
 }
 
 #modalIngredients{
-    padding-left: 1vh;
+    padding-left: 4.5vh;
+    margin-top: 2.5vh;
 }
 
 #modalIngredients li{
-    margin-bottom: 2px;
-}
-.ingredients-container{
-    padding: 3vh;
+    line-height: 4.5vh;
+    font-weight: 500;
+    font-size: 18px;
 }
 
+/* style for responsive */
 @media screen and (max-width:600px){
     .logo>img{
         height:80px ;
         width:80px ;
         margin-top: 2vh;
     }
+
     .website-name{
         font-size: 37px;
         margin-top: -3vh;
@@ -182,41 +188,76 @@ h3{
     .description{
         width: 75vw;
     }
+
     .description>p{
-        font-size: 14px;
+        font-size: 12px;
     }
+
     .input{
         width: 60vw;
     }
+
     .input-field{
         margin: 2vw;
     }
+
     .search-button{
         width: 30px;
     }
+
     .search-button>img{
         height: 13px;
         width: 13px;
     }
+
     .main-container{
         margin-top: 2vh;
     }
+
     h2{
         font-size: 20px;
     }
+
     .dish-image{
         width: 30vh;
     }
+
     h3{
         font-size: 15px;
     }
+
     .dish-container{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         margin: 5vh;
     }
+
     .dish-container h3{
         width: 30vh;
+    }
+
+    .result-div h3{
+        width: 30vh;
+    }
+
+    .modal{
+        height: 300px;
+        width: 240px;
+        top: 22%;
+        left: 10%;
+    }
+
+    .close{
+        font-size: 25px;
+    }
+
+    #modalIngredients{
+        padding-left: 3.5vh;
+        margin-top: 1.5vh;
+    }
+
+    #modalIngredients li{
+        font-size: 15px;
     }
 }
