@@ -125,6 +125,9 @@ h2{
 h3{
     font-weight: 600;
 }
+.not-found{
+    text-align: center;
+}
 
 /* Style for Modal */
 .modal{
@@ -259,5 +262,8 @@ h3{
 
     #modalIngredients li{
         font-size: 15px;
+    }
+    .not-found h3{
+        width: auto;
     }
 }

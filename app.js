@@ -62,31 +62,45 @@ function fetchSearchedMeal(category){
 
     .then(response=>{
         
-        let searchedCategory=response.meals
-        console.log(searchedCategory)
-        
         let displayDish=document.getElementById("searchedDish")
         
-        displayDish.innerHTML=""
-
-        searchedCategory.forEach(dishes=>{
-            const div=document.createElement("div")
-            
-            //Displaying searched Meals in inner HTML
-            div.innerHTML=`
-            <div class="result-div" id="${dishes.idMeal}" >
-                <img class="dish-image" id="Modal-open" src="${dishes.strMealThumb}" alt="">
-                <h3 class="orange">${dishes.strMeal}</h3>
+        if(response.meals){
+            let searchedCategory=response.meals
+            console.log("True")
+            console.log(searchedCategory)
+                
+            displayDish.innerHTML=""
+    
+            searchedCategory.forEach(dishes=>{
+                const div=document.createElement("div")
+                
+                //Displaying searched Meals in inner HTML
+                div.innerHTML=`
+                <div class="result-div" id="${dishes.idMeal}" >
+                    <img class="dish-image" id="Modal-open" src="${dishes.strMealThumb}" alt="">
+                    <h3 class="orange">${dishes.strMeal}</h3>
+                </div>
+                `
+                let mealId=dishes.idMeal
+                div.onclick=()=>{
+                    openModal(mealId) //Taking id to other function to display ingredients on click
+                }
+                
+                displayDish.append(div)
+            })
+        }
+        else{
+            console.log("False")
+            displayDish.innerHTML=""
+            displayDish.innerHTML+=`
+            <div  class="not-found">
+                <h3>
+                    Category for "${category}" not found 
+                </h3>
             </div>
             `
-            let mealId=dishes.idMeal
-            div.onclick=()=>{
-                openModal(mealId) //Taking id to other function to display ingredients on click
-            }
+        }
             
-            displayDish.append(div)
-            
-        })
     })
 
     .catch(error=>{
@@ -94,9 +108,11 @@ function fetchSearchedMeal(category){
     })
 }
 
+
 //Creating variables related to modal
 let modalOpen=document.getElementById("Modal-open")
 let modalIngredients=document.getElementById("modalIngredients")
+
 
 //This is for closing modal
 let modalClose=document.getElementById("closeBtn")
