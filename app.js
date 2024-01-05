@@ -9,7 +9,8 @@ function fetchRandomMeal() {
     .then(finalresponse => {
       let randomMeal=finalresponse.meals[0]
       displayRandomMeal(randomMeal)
-      console.log(finalresponse.meals[0])
+    //   console.log(finalresponse)
+        // console.log(finalresponse.meals[0])
     })
     
     .catch(error => {
@@ -32,7 +33,7 @@ function displayRandomMeal(random){
     let mealId=random.idMeal   //Sending meal id into another function to display ingredients on click
     randomMealDiv.addEventListener('click',()=>{
         openModal(mealId)
-        console.log(mealId)
+        // console.log(mealId)
     })
 }
 
@@ -43,7 +44,7 @@ let searchButton=document.getElementById("submit")
 searchButton.addEventListener('click',()=>{
     
     let inputCategory=document.getElementById("input").value
-    console.log(inputCategory)
+    // console.log(inputCategory)
     
     fetchSearchedMeal(inputCategory)
 })
@@ -66,9 +67,10 @@ function fetchSearchedMeal(category){
         
         if(response.meals){
             let searchedCategory=response.meals
-            console.log("True")
-            console.log(searchedCategory)
-                
+            // console.log("True")
+
+            // console.log(searchedCategory)
+
             displayDish.innerHTML=""
     
             searchedCategory.forEach(dishes=>{
@@ -90,7 +92,7 @@ function fetchSearchedMeal(category){
             })
         }
         else{
-            console.log("False")
+            // console.log("False")
             displayDish.innerHTML=""
             displayDish.innerHTML+=`
             <div  class="not-found">
@@ -123,7 +125,7 @@ modalClose.addEventListener('click',()=>{
 //Function for opening Modal
 function openModal(mealId){
     
-    console.log(mealId)
+    // console.log(mealId)
     
     //Fetching ingredients of clicked dish
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
@@ -134,7 +136,7 @@ function openModal(mealId){
     
     .then(response=>{
         let dishes=response.meals[0]
-
+        // console.log(response)
         modalIngredients.innerHTML=""
         
         //Looping through all ingredients
@@ -145,7 +147,7 @@ function openModal(mealId){
             //Displaying ingredients until all ingredients print in HTML
             if (ingredient !=="" ) {
                 
-                console.log(`${ingredient}`);
+                // console.log(`${ingredient}`);
 
                 modalIngredients.innerHTML+=`
                 <li>${ingredient}</li>`
